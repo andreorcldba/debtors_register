@@ -1,0 +1,21 @@
+{
+    "name": "root/debtors_register",
+    "description": "Debtor Register Software",
+    "authors": [
+        {
+            "name": "André Vargas",
+            "email": "andre.orcl.dba@gmail.com"
+        }
+    ],
+	"license": "MIT",
+    "require": {},
+    "autoload" : {
+    	"psr-4": {
+    		"App\\" : "app/",
+    		"Src\\" : "src/"
+    	},
+        "files": [
+            "src/helpers/helper_routes.php"
+        ]
+    }
+}
