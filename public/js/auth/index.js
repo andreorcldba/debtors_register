@@ -7,7 +7,7 @@ const auth = () => {
     
     if($("#email").val() != '' && $("#password").val()) {
         $.ajax({
-            url: `${window.location.href}auth/`,
+            url: `/auth`,
             type: 'POST',
             data: {
                 email: $("#email").val(),

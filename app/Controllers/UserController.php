@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Services\Utils;
 use App\Models\User;
 
 class UserController {
@@ -27,6 +28,12 @@ class UserController {
     }
 
     /**
+     * Show list form user.
+     */
+    public function list() {
+        include "ROOT_PATH" . "../../../resource/views/user/list.php";
+    }
+    /**
      * Show the form for creating a new user.
      */
     public function create() {
@@ -37,15 +44,12 @@ class UserController {
      */
     public function store() {
        
-        $json = file_get_contents("php://input");
-        $data = json_decode($json, true);
-
-        if (isset($data["email"])) {
-            $this->user->setEmail($data["email"]);
+        if (isset($_POST["email"])) {
+            $this->user->setEmail($_POST["email"]);
         }
 
-        if (isset($data["password"])) {
-            $this->user->setPassword($data["password"]);
+        if (isset($_POST["password"])) {
+            $this->user->setPassword($_POST["password"]);
         }
 
         echo $this->user->save();   
@@ -58,15 +62,14 @@ class UserController {
     }
 
     public function update($id) {
-       
-        $json = file_get_contents("php://input");
-        $data = json_decode($json, true);
+
+        $data = Utils::patchMethod();
 
         if (isset($data["email"])) {
             $this->user->setEmail($data["email"]);
         }
 
-        if (isset($data["password"])) {
+        if (isset($data["password"]) && $data["password"] != '') {
             $this->user->setPassword($data["password"]);
         }
 

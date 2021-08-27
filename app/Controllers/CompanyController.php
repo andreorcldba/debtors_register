@@ -2,12 +2,20 @@
 namespace App\Controllers;
 
 use App\Models\Company;
+use App\Services\Utils;
 
 class CompanyController {
 
     public function __construct()
     {
         $this->company = new Company();
+    }
+
+    /**
+     * Show list form user.
+     */
+    public function list() {
+        include "ROOT_PATH" . "../../../resource/views/company/list.php";
     }
 
     /**
@@ -35,27 +43,24 @@ class CompanyController {
      * Store a new created user in storage.
      */
     public function store() {
-
-        $json = file_get_contents("php://input");
-        $data = json_decode($json, true);
-
-        if (isset($data["email"])) {
-            $this->company->setEmail($data["email"]);
+        
+        if (isset($_POST["email"])) {
+            $this->company->setEmail($_POST["email"]);
         }
 
-        if (isset($data["address"])) {
-            $this->company->setAddress($data["address"]);
+        if (isset($_POST["address"])) {
+            $this->company->setAddress($_POST["address"]);
         }
 
-        if (isset($data["telephone"])) {
-            $this->company->setTelephone($data["telephone"]);
+        if (isset($_POST["telephone"])) {
+            $this->company->setTelephone($_POST["telephone"]);
         }
 
-        if (isset($data["cnpj"])) {
-            $this->company->setCnpj($data["cnpj"]);
+        if (isset($_POST["cnpj"])) {
+            $this->company->setCnpj($_POST["cnpj"]);
         }
 
-        echo $this->company->save();   
+        echo $this->company->save();
     }
     /**
      * Display the specified user from updated.
@@ -65,8 +70,8 @@ class CompanyController {
     }
 
     public function update($id) {
-        $json = file_get_contents("php://input");
-        $data = json_decode($json, true);
+
+        $data = Utils::patchMethod();
 
         if (isset($data["email"])) {
             $this->company->setEmail($data["email"]);

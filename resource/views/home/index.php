@@ -25,8 +25,8 @@
                     Usuários
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/user/create">Cadastrar</a>
                     <a class="dropdown-item" href="#">Visualizar</a>
-                    <a class="dropdown-item" href="#">Cadastrar</a>
                     <a class="dropdown-item" href="#">Editar</a>
                     <a class="dropdown-item" href="#">Deletar</a>
                 </li>

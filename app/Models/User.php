@@ -24,7 +24,7 @@ class User
             $connection = new Connection();
 
             $open_connection = $connection->db_connect();
-            $stmt = $open_connection->prepare("select * from users");
+            $stmt = $open_connection->prepare("select * from users order by id asc");
             $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -59,13 +59,13 @@ class User
         }
     }
 
-    public function findByEmail($email)
+    public function findByEmailAuth($email)
     {
         try {
             $connection = new Connection();
 
            $open_connection = $connection->db_connect();
-           $stmt = $open_connection->prepare("select * from users where email=:email");
+           $stmt = $open_connection->prepare("select * from users where active is true and email=:email");
            $stmt->bindParam(":email", $email);
            $stmt->execute();
 
@@ -142,10 +142,17 @@ class User
             $connection = new Connection();
             $open_connection = $connection->db_connect();
 
-            $stmt = $open_connection->prepare("update users set email = :email, pass = :pass, updated_at = :updated_at where id=:id");
-            
+            if($this->password != '') {
+                $stmt = $open_connection->prepare("update users set email = :email, pass = :pass, updated_at = :updated_at where id=:id");
+            } else {
+                $stmt = $open_connection->prepare("update users set email = :email, updated_at = :updated_at where id=:id");
+            }
             $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":pass", $this->password);
+            
+            if($this->password != '') {
+                $stmt->bindParam(":pass", $this->password);
+            }
+            
             $stmt->bindParam(":updated_at", $this->updated_at);
             $stmt->bindParam(":id", $id);
             
@@ -165,7 +172,7 @@ class User
 
     public function authentication($password) 
     {
-        $user = json_decode($this->findByEmail($this->email), true);
+        $user = json_decode($this->findByEmailAuth($this->email), true);
   
         if (password_verify($password, $user['pass'])) {
             $_SESSION['login'] = $this->email;
@@ -177,12 +184,4 @@ class User
             exit;
         }
     }
-
-    public function signOut() {
-     //   session_start();
-     //   unset ($_SESSION['email']);
-    }
-
-    // if( !isset($_SESSION['user'])){
-    // 	echo 'Deve realizar o login para se candidatar!';
 }

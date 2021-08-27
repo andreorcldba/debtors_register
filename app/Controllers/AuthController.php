@@ -29,4 +29,12 @@ class AuthController {
             exit;
         }
     }
+
+    public function logout() {
+        unset( $_SESSION['login'] );
+
+        echo json_encode([
+            'message'=> "user logged out successfully",
+        ]);
+    }
 }
