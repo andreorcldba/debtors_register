@@ -12,7 +12,7 @@ class CompanyController {
     }
 
     /**
-     * Show list form user.
+     * Show list form company.
      */
     public function list() {
         include "ROOT_PATH" . "../../../resource/views/company/list.php";
@@ -27,20 +27,20 @@ class CompanyController {
     }
 
     /**
-     * Display specific user.
+     * Display specific company.
      */
     public function show($id) {
         echo $this->company->findOne($id);
     }
 
     /**
-     * Show the form for creating a new user.
+     * Show the form for creating a new company.
      */
     public function create() {
         include "ROOT_PATH" . "../../../resource/views/company/create.php";
     }
     /**
-     * Store a new created user in storage.
+     * Store a new created company in storage.
      */
     public function store() {
         
@@ -63,7 +63,7 @@ class CompanyController {
         echo $this->company->save();
     }
     /**
-     * Display the specified user from updated.
+     * Display the specified company from updated.
      */
     public function edit() {
         include "ROOT_PATH" . "../../../resource/views/company/edit.php";
@@ -92,7 +92,7 @@ class CompanyController {
         echo $this->company->update($id);   
     }
     /**
-     * Remove the specified user from storage.
+     * Remove the specified company from storage.
      */
     public function destroy($id) {
         echo $this->company->remove($id);

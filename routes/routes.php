@@ -40,3 +40,14 @@ Route::get('/company/edit/{id}', 'Controllers\CompanyController@edit');
 Route::delete('/company/{id}/delete', 'Controllers\CompanyController@destroy');
 Route::post('/company', 'Controllers\CompanyController@store');
 Route::patch('/company/{id}', 'Controllers\CompanyController@update');
+/**
+  * Debtors
+***/
+Route::get('/debtor', 'Controllers\DebtorsController@index');
+Route::get('/debtor/{id}/show', 'Controllers\DebtorsController@show');
+Route::get('/debtors/list', 'Controllers\DebtorsController@list');
+Route::get('/debtor/create', 'Controllers\DebtorsController@create');
+Route::get('/debtors/edit/{id}', 'Controllers\DebtorsController@edit');
+Route::delete('/debtor/{id}/delete', 'Controllers\DebtorsController@destroy');
+Route::post('/debtor', 'Controllers\DebtorsController@store');
+Route::patch('/debtors/{id}', 'Controllers\DebtorsController@update');

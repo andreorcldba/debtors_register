@@ -13,7 +13,7 @@
     <title>Empresa</title>
 </head>
 <body onload="loadUser();">
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -32,18 +32,16 @@
                     Empresas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Visualizar</a>
-                    <a class="dropdown-item" href="#">Cadastrar</a>
-                    <a class="dropdown-item" href="#">Editar</a>
-                    <a class="dropdown-item" href="#">Deletar</a>
+                    <a class="dropdown-item" href="/company/list">Lista</a>
+                    <a class="dropdown-item" href="/company/create">Cadastro</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Devedores
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Adicionar</a>
-                    <a class="dropdown-item" href="#">Remover</a>
+                    <a class="dropdown-item" href="/debtors/list">Lista</a>
+                    <a class="dropdown-item" href="/debtor/create">Cadastro</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
