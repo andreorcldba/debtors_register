@@ -58,12 +58,12 @@
         <form>
             <div class="form-group">
                 <label for="email">Endereço de email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email" maxlength="255">
                 <span id="email-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" placeholder="Deixe em branco para não atualizar">
+                <input type="password" class="form-control" id="password" placeholder="Deixe em branco para não atualizar" maxlength="255">
                 <span id="password-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
             <button type="button" class="btn btn-primary" onClick="create();">Salvar</button>

@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/auth/styles.css" type="text/css"> -->
     <title>Usuários</title>
 </head>
 <body onload="loadUser();">
@@ -59,12 +58,12 @@
         <form>
             <div class="form-group">
                 <label for="email">Endereço de email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email" maxlength="255">
                 <span id="email-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" placeholder="Deixe em branco para não atualizar">
+                <input type="password" class="form-control" id="password" placeholder="Deixe em branco para não atualizar" maxlength="255">
             </div>
             <button type="button" class="btn btn-primary" onClick="edit();">Salvar</button>
         </form>

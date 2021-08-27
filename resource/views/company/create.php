@@ -53,26 +53,26 @@
             </ul>
         </div>
     </nav>
-    <h3 class="text-center mt-3 mb-3">Usuários</h3>
+    <h3 class="text-center mt-3 mb-3">Editar Empresa</h3>
     <div class="container">    
         <form>
             <div class="form-group">
                 <label for="email">Endereço de email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Seu email" maxlength="255">
                 <span id="email-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
             <div class="form-group">
-                <label for="password">Endereço</label>
-                <input type="text" class="form-control" id="address" placeholder="Seu endereço">
+                <label for="address">Endereço</label>
+                <input type="text" class="form-control" id="address" placeholder="Seu endereço" maxlength="100">
             </div>
             <div class="form-group">
-                <label for="password">Cnpj</label>
+                <label for="cnpj">Cnpj</label>
                 <input type="text" class="form-control" id="cnpj" placeholder="Seu cnpj">
-                <span id="cnpj-error-01" class="text-danger d-none">Este campo é obrigatório</span>
+                <span id="cnpj-error-01" class="text-danger d-none" maxlength="18">Este campo é obrigatório</span>
             </div>
             <div class="form-group">
-                <label for="telephone">Cnpj</label>
-                <input type="text" class="form-control" id="telephone" placeholder="Seu telefone">
+                <label for="telephone">Telefone</label>
+                <input type="text" class="form-control" id="telephone" placeholder="Seu telefone, ex: (51) 35880829" maxlength="14">
             </div>
             <button type="button" class="btn btn-primary" onClick="create();">Salvar</button>
         </form>
@@ -80,7 +80,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"></script>
     <script type="text/javascript" src="/js/company/index.js"></script>
+    <script type="text/javascript" src="/js/company/mask.js"></script>
     <script type="text/javascript" src="/js/global.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
     reloadData();
 });
@@ -65,7 +66,8 @@ const removeData = (id) => {
         url: `/user/${id}/delete`,
         type: 'DELETE',
         contentType: 'application/x-www-form-urlencoded',
-        success: () => {
+        success: (data) => {
+            console.log(data);
             showMessage("Usuário deletado com sucesso");
             reloadData();
         },
@@ -96,13 +98,22 @@ const edit = () => {
             },
             contentType: 'application/x-www-form-urlencoded',
             success: (data) => {
+                console.log(data)
                 showMessage("Usuário atualizado com sucesso");
                 setTimeout(function(){ 
                     window.location.href = "/user/list";
                 }, 1000);
             },
             error: (xhr, error_text, statusText) => {
-                showMessage("Não foi possível atualizar este usuário");
+                switch (JSON.parse(xhr.responseText).message) {
+                    case "This record already exists":
+                        showMessage("Este usuário já foi cadastrado");
+                    break;
+                        
+                    default:
+                        showMessage("Erro desconhecido. Não foi possível cadastrar este usuário");
+                    break;
+                }
                 console.log({
                     xhr: xhr,
                     error_text: error_text,
@@ -135,7 +146,15 @@ const create = () => {
                 }, 1000);
             },
             error: (xhr, error_text, statusText) => {
-                showMessage("Não foi possível cadastrar este usuário");
+                switch (JSON.parse(xhr.responseText).message) {
+                    case "This record already exists":
+                        showMessage("Este usuário já foi cadastrado");
+                    break;
+                        
+                    default:
+                        showMessage("Erro desconhecido. Não foi possível cadastrar este usuário");
+                    break;
+                }
                 console.log({
                     xhr: xhr,
                     error_text: error_text,

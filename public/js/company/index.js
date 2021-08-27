@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     reloadData();
 });
@@ -68,7 +67,7 @@ const removeData = (id) => {
         type: 'DELETE',
         contentType: 'application/x-www-form-urlencoded',
         success: () => {
-            showMessage("Usuário deletado com sucesso");
+            showMessage("Empresa deletada com sucesso");
             reloadData();
         },
         error: (xhr, error_text, statusText) => {
@@ -107,12 +106,20 @@ const edit = () => {
                 }, 1000);
             },
             error: (xhr, error_text, statusText) => {
-                showMessage("Não foi possível atualizar a empresa");
+                switch (JSON.parse(xhr.responseText).message) {
+                    case "This record already exists":
+                        showMessage("Esta empresa já foi cadastrada");
+                    break;
+                        
+                    default:
+                        showMessage("Erro desconhecido. Não foi possível atualizar a empresa");
+                    break;
+                }
                 console.log({
                     xhr: xhr,
                     error_text: error_text,
                     statusText: statusText
-                });
+                })
             }
         });
     }
@@ -143,7 +150,15 @@ const create = () => {
                 }, 1000);
             },
             error: (xhr, error_text, statusText) => {
-                showMessage("Não foi possível cadastrar esta empresa");
+                switch (JSON.parse(xhr.responseText).message) {
+                    case "This record already exists":
+                        showMessage("Esta empresa já foi cadastrada");
+                    break;
+                        
+                    default:
+                        showMessage("Erro desconhecido. Não foi possível cadastrar esta empresa");
+                    break;
+                }
                 console.log({
                     xhr: xhr,
                     error_text: error_text,

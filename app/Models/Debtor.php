@@ -122,7 +122,7 @@ class Debtor
         $this->value = $value;
     }
 
-    public function save() 
+    public function save()
     {
         try {
             $connection = new Connection();
@@ -157,8 +157,20 @@ class Debtor
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);
-        } catch(PDOException $e) {
-            return $e;
+        }catch(\Throwable $error) {
+            $error = explode(':', $error->getMessage());
+            http_response_code(500);
+            switch ($error[0]) {
+                
+                case 'SQLSTATE[23000]':
+                    echo json_encode(['message'=> 'This record already exists']);
+                break;
+                
+                default:
+                    echo json_encode(['message'=> $error]);
+                break;
+            }
+            exit;
         }
     }
 
@@ -196,8 +208,20 @@ class Debtor
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);
-        } catch(PDOException $e) {
-            return $e;
+        }catch(\Throwable $error) {
+            $error = explode(':', $error->getMessage());
+            http_response_code(500);
+            switch ($error[0]) {
+                
+                case 'SQLSTATE[23000]':
+                    echo json_encode(['message'=> 'This record already exists']);
+                break;
+                
+                default:
+                    echo json_encode(['message'=> 'unknown error']);
+                break;
+            }
+            exit;
         }
     }
 }

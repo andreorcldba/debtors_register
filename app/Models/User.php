@@ -82,7 +82,6 @@ class User
 
     public function remove($id)
     {
-
         try {
             $connection = new Connection();
 
@@ -131,9 +130,21 @@ class User
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);
-        } catch(PDOException $e) {
-            return $e;
-        }
+        }catch(\Throwable $error) {
+   		    $error = explode(':', $error->getMessage());
+            http_response_code(500);
+            switch ($error[0]) {
+                
+                case 'SQLSTATE[23000]':
+                    echo json_encode(['message'=> 'This record already exists']);
+                break;
+                
+                default:
+                    echo json_encode(['message'=> 'unknown error']);
+                break;
+            }
+            exit;
+        } 
     }
 
     public function update($id) 
@@ -165,8 +176,20 @@ class User
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);
-        } catch(PDOException $e) {
-            return $e;
+        }catch(\Throwable $error) {
+            $error = explode(':', $error->getMessage());
+            http_response_code(500);
+            switch ($error[0]) {
+                
+                case 'SQLSTATE[23000]':
+                    echo json_encode(['message'=> 'This record already exists']);
+                break;
+                
+                default:
+                    echo json_encode(['message'=> 'unknown error']);
+                break;
+            }
+            exit;
         }
     }
 
