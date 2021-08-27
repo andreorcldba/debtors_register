@@ -58,6 +58,7 @@ const reloadData = () => {
                     <td>${data[i].address}</td>
                     <td>${data[i].description}</td>
                     <td>${data[i].value}</td>
+                    <td>${data[i].expiration}</td>
                     <td>
                         <a class="btn btn-primary" href="/debtors/edit/${data[i].id}" role="button">Editar</a>
                         <button type="button" class="btn btn-primary" onClick="removeData('${data[i].id}')">Deletar</button>
@@ -132,7 +133,8 @@ const edit = () => {
                 company_id: $("#company_id").val(),
                 date_of_birth: $("#date_of_birth").val(),
                 description: $("#description").val(),
-                value: $("#value").val()
+                value: $("#value").val(),
+                expiration: $("#expiration").val(),
             },
             contentType: 'application/x-www-form-urlencoded',
             success: () => {
@@ -168,8 +170,9 @@ const create = () => {
     $("#email").val() == '' ? $("#email-error-01").removeClass("d-none") : $("#email-error-01").addClass("d-none");
     $("#description").val() == '' ? $("#description-error-01").removeClass("d-none") : $("#description-error-01").addClass("d-none");
     $("#value").val() == '' ? $("#value-error-01").removeClass("d-none") : $("#value-error-01").addClass("d-none");
+    $("#expiration").val() == '' ? $("#expiration-error-01").removeClass("d-none") : $("#expiration-error-01").addClass("d-none");
     
-    if($("#cod").val() != '' && $("#email").val() != '' && $("#description").val() != '' && $("#value").val() != '') {
+    if($("#cod").val() != '' && $("#email").val() != '' && $("#description").val() != '' && $("#value").val() != '' && $("#expiration").val() != '') {
        
         $.ajax({
             url: `/debtor`,
@@ -182,14 +185,15 @@ const create = () => {
                 company_id: $("#company_id").val(),
                 date_of_birth: $("#date_of_birth").val(),
                 description: $("#description").val(),
-                value: $("#value").val()
+                value: $("#value").val(),
+                expiration: $("#expiration").val()
             },
             contentType: 'application/x-www-form-urlencoded',
             success: (data) => {
                 console.log(data);
                 showMessage("Empresa cadastrada com sucesso");
                 setTimeout(function(){ 
-                    window.location.href = "/company/list";
+                    window.location.href = "/debtors/list";
                 }, 1000);
             },
             error: (xhr, error_text, statusText) => {

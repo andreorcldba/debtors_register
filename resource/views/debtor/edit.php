@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Empresa</title>
+    <title>Editar Devedores</title>
 </head>
 <body onload="loadCompany();">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -95,6 +95,11 @@
                 <label for="value">Valor do título</label>
                 <input type="text" class="form-control" id="value" placeholder="Insira o valor">
                 <span id="value-error-01" class="text-danger d-none">Este campo é obrigatório</span>
+            </div>
+            <div class="form-group">
+                <label for="expiration">Data de expiração</label>
+                <input type="date" class="form-control" id="expiration">
+                <span id="expiration-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
             <button type="button" class="btn btn-primary" onClick="edit();">Salvar</button>
         </form>

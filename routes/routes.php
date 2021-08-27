@@ -51,3 +51,8 @@ Route::get('/debtors/edit/{id}', 'Controllers\DebtorsController@edit');
 Route::delete('/debtor/{id}/delete', 'Controllers\DebtorsController@destroy');
 Route::post('/debtor', 'Controllers\DebtorsController@store');
 Route::patch('/debtors/{id}', 'Controllers\DebtorsController@update');
+/**
+  * Dasboard endpoint
+***/
+Route::get('/dashboard/{id}', 'Controllers\DashboardController@show');
+

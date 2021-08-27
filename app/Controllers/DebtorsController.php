@@ -75,6 +75,10 @@ class DebtorsController {
         if (isset($_POST["value"])) {
             $this->debtor->setValue($_POST["value"]);
         }
+
+        if (isset($_POST["expiration"])) {
+            $this->debtor->setExpiration($_POST["expiration"]);
+        }
     
         echo $this->debtor->save();
     }
@@ -118,6 +122,10 @@ class DebtorsController {
 
         if (isset($data["value"])) {
             $this->debtor->setValue($data["value"]);
+        }
+
+        if (isset($data["expiration"])) {
+            $this->debtor->setExpiration($data["expiration"]);
         }
 
         echo $this->debtor->update($id);

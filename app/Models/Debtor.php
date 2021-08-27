@@ -15,6 +15,7 @@ class Debtor
     protected $address = null;
     protected $description = null;
     protected $value = null;
+    protected $expiration = null;
     protected $created_at = null;
     protected $updated_at = null;
 
@@ -122,14 +123,19 @@ class Debtor
         $this->value = $value;
     }
 
+    public function setExpiration($expiration) 
+    {
+        $this->expiration = $expiration;
+    }
+
     public function save()
     {
         try {
             $connection = new Connection();
             
             $open_connection = $connection->db_connect();
-            $stmt = $open_connection->prepare("insert into debtor(company_id, type_cod, cod, date_of_birth, email, address, description, value, created_at, updated_at) values(
-            :company_id, :type_cod, :cod, :date_of_birth, :email, :address, :description, :value, :created_at, :updated_at)");
+            $stmt = $open_connection->prepare("insert into debtor(company_id, type_cod, cod, date_of_birth, email, address, description, value, expiration, created_at, updated_at) values(
+            :company_id, :type_cod, :cod, :date_of_birth, :email, :address, :description, :value, :expiration, :created_at, :updated_at)");
             
             $stmt->bindParam(":company_id", $this->company_id);
             $stmt->bindParam(":type_cod", $this->type_cod);
@@ -139,9 +145,10 @@ class Debtor
             $stmt->bindParam(":address", $this->address);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":value", $this->value);
+            $stmt->bindParam(":expiration", $this->value);
             $stmt->bindParam(":created_at", $this->created_at);
             $stmt->bindParam(":updated_at", $this->updated_at);
-
+            
             $stmt->execute();
             $connection->db_close();
            
@@ -154,6 +161,7 @@ class Debtor
                 'address'=> $this->address,
                 'description'=> $this->description,
                 'value'=> $this->value,
+                'expiration'=> $this->expiration,
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);
@@ -180,7 +188,7 @@ class Debtor
             $connection = new Connection();
             $open_connection = $connection->db_connect();
 
-            $stmt = $open_connection->prepare("update debtor set company_id = :company_id, type_cod = :type_cod, cod = :cod, date_of_birth = :date_of_birth, email = :email, address = :address, description = :description, value = :value, updated_at = :updated_at where id=:id");
+            $stmt = $open_connection->prepare("update debtor set company_id = :company_id, type_cod = :type_cod, cod = :cod, date_of_birth = :date_of_birth, email = :email, address = :address, description = :description, value = :value, expiration = :expiration, updated_at = :updated_at where id=:id");
             
             $stmt->bindParam(":company_id", $this->company_id);
             $stmt->bindParam(":type_cod", $this->type_cod);
@@ -190,6 +198,7 @@ class Debtor
             $stmt->bindParam(":address", $this->address);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":value", $this->value);
+            $stmt->bindParam(":expiration", $this->expiration);
             $stmt->bindParam(":updated_at", $this->updated_at);
             $stmt->bindParam(":id", $id);
 
@@ -205,6 +214,7 @@ class Debtor
                 'address'=> $this->address,
                 'description'=> $this->description,
                 'value'=> $this->value,
+                'expiration'=> $this->expiration,
                 'created_at'=> $this->created_at,
                 'updated_at'=> $this->updated_at
             ]);

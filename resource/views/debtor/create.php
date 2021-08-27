@@ -96,6 +96,11 @@
                 <input type="text" class="form-control" id="value" placeholder="Insira o valor">
                 <span id="value-error-01" class="text-danger d-none">Este campo é obrigatório</span>
             </div>
+            <div class="form-group">
+                <label for="expiration">Data de expiração</label>
+                <input type="date" class="form-control" id="expiration">
+                <span id="expiration-error-01" class="text-danger d-none">Este campo é obrigatório</span>
+            </div>
             <button type="button" class="btn btn-primary" onClick="create();">Salvar</button>
         </form>
     </div>

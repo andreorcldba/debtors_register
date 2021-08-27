@@ -17,6 +17,7 @@ $.ajax({
         $("#description").val(data[0].description);
         $("#value").val(data[0].value);
         $("#cnpj").val(data[0].cnpj);
+        $("#expiration").val(data[0].expiration);
     },
     error: (xhr, error_text, statusText) => {
         console.log({
