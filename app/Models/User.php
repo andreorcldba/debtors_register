@@ -177,20 +177,19 @@ class User
                 'updated_at'=> $this->updated_at
             ]);
         }catch(\Throwable $error) {
-            echo $error;
-            // $error = explode(':', $error->getMessage());
-            // http_response_code(500);
-            // switch ($error[0]) {
+            $error = explode(':', $error->getMessage());
+            http_response_code(500);
+            switch ($error[0]) {
                 
-            //     case 'SQLSTATE[23000]':
-            //         echo json_encode(['message'=> 'This record already exists']);
-            //     break;
+                case 'SQLSTATE[23000]':
+                    echo json_encode(['message'=> 'This record already exists']);
+                break;
                 
-            //     default:
-            //         echo json_encode(['message'=> 'unknown error']);
-            //     break;
-            // }
-            // exit;
+                default:
+                    echo json_encode(['message'=> 'unknown error']);
+                break;
+            }
+            exit;
         }
     }
 
