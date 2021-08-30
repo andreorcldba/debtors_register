@@ -58,7 +58,7 @@
     </nav>
     <h3 class="text-center mt-3 mb-3">Lista de devedores</h3>
     <div class="container-fluid">
-        <div class="col-md-12">
+        <div class="table-responsive">
             <table class="table table-striped">
                 <div id="table-header">
                     <thead>
