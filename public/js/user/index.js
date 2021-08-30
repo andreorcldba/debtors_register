@@ -29,8 +29,8 @@ const reloadData = () => {
                     <td>${data[i].email}</td>
                     <td>${data[i].active ? "Ativo" : "Inativado"}</td>
                     <td>
-                        <a class="btn btn-primary w-100 mb-2" href="/user/edit/${data[i].id}" role="button">Editar</a>
-                        <button type="button" class="btn btn-primary w-100" onClick="removeData('${data[i].id}')">Deletar</button>
+                        <a class="btn btn-primary mb-2" href="/user/edit/${data[i].id}" role="button" style="width: 100px;">Editar</a>
+                        <button type="button" class="btn btn-primary mb-2" onClick="removeData('${data[i].id}')" style="width: 100px;">Deletar</button>
                     </td>
                 </tr>`;
             }

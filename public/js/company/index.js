@@ -29,8 +29,8 @@ const reloadData = () => {
                     <td>${data[i].telephone}</td>
                     <td>${data[i].cnpj}</td>
                     <td>
-                        <a class="btn btn-primary w-100 mb-2" href="/company/edit/${data[i].id}" role="button">Editar</a>
-                        <button type="button w-100" class="btn btn-primary" onClick="removeData('${data[i].id}')">Deletar</button>
+                        <a class="btn btn-primary mb-2" href="/company/edit/${data[i].id}" role="button" style="width: 100px;">Editar</a>
+                        <button type="button w-100" class="btn btn-primary mb-2" onClick="removeData('${data[i].id}')" style="width: 100px;">Deletar</button>
                     </td>
                 </tr>`;
             }

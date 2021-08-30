@@ -60,8 +60,8 @@ const reloadData = () => {
                     <td>${data[i].value}</td>
                     <td>${data[i].expiration}</td>
                     <td>
-                        <a class="btn btn-primary w-100 mb-2" href="/debtors/edit/${data[i].id}" role="button">Editar</a>
-                        <button type="button" class="btn btn-primary w-100" onClick="removeData('${data[i].id}')">Deletar</button>
+                        <a class="btn btn-primary mb-2" href="/debtors/edit/${data[i].id}" role="button" style="width: 100px;">Editar</a>
+                        <button type="button" class="btn btn-primary mb-2" onClick="removeData('${data[i].id}')" style="width: 100px;">Deletar</button>
                     </td>
                 </tr>`;
             }
